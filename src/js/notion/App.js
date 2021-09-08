@@ -227,6 +227,10 @@ export default function App({$target}) {
         this.route();
     };
 
+    $('.username').addEventListener('click', ({target}) => {
+        push(`/`);
+    });
+
     const init = async () => {
         await fetchDocuments();
         this.route();

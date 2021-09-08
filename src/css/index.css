@@ -18,6 +18,7 @@ ul {
     margin: 10px;
     font-size: small;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .document {

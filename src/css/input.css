@@ -1,0 +1,25 @@
+input {
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+}
+
+input::placeholder {
+    color: #d3d1cb;
+}
+
+input[name='title'] {
+    width: 800px;
+    height: 50px;
+    border: none;
+    padding-top: 10px;
+    margin-bottom: 60px;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+textarea[name='content'] {
+    width: 800px;
+    height: 600px;
+    border: none;
+}

@@ -1,0 +1,127 @@
+.btn {
+    height: 20px;
+    min-width: 10px;
+    border-radius: 4px;
+    outline: 0;
+    border-style: none;
+    cursor: pointer;
+}
+
+.btn-cyan {
+    background-color: rgb(247, 246, 243) !important;
+    border-color: rgb(247, 246, 243) !important;
+    color: #b5afaf;
+}
+
+.btn.btn-cyan:hover {
+    background-color: #edece9 !important;
+    color: gray;
+}
+
+.control-button {
+    flex-shrink: 0;
+}
+
+.add-button {
+    padding-top: 5px;
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+.add-button:hover {
+    opacity: 1;
+}
+
+.add-button .add-button-text {
+    visibility: hidden;
+    width: 170px;
+    font-size: 5px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 2;
+}
+
+.add-button:hover .add-button-text {
+    visibility: visible;
+}
+
+button.document {
+    font-size: 13px;
+    padding: 5px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    width: 50%;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+button.document:hover {
+    color: #d3d1cb;
+}
+
+button.toggle {
+    font-size: 7px;
+    padding: 5px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    width: 10%;
+    text-align: left;
+    color: #adaba3;
+}
+
+button.toggle:hover {
+    color: #8a8881;
+}
+
+.remove-button {
+    padding-top: 5px;
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+.remove-button:hover {
+    opacity: 1;
+}
+
+.remove-button .remove-button-text {
+    visibility: hidden;
+    width: 50px;
+    font-size: 5px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.remove-button:hover .remove-button-text {
+    visibility: visible;
+}
+
+.go-parent-document-button {
+    height: 20px;
+    min-width: 10px;
+    border-radius: 4px;
+    outline: 0;
+    border-style: none;
+    cursor: pointer;
+    background-color: white;
+    color: gray;
+}
+
+.go-parent-document-button:hover {
+    background-color: #edece9 !important;
+    color: gray;
+}

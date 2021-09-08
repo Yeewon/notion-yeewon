@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" type="image⁄x-icon" href="./src/img/logo.png" />
+        <title>Notion</title>
+        <link rel="stylesheet" href="/src/css/index.css" />
+        <link rel="stylesheet" href="/src/css/button.css" />
+        <link rel="stylesheet" href="/src/css/form.css" />
+        <link rel="stylesheet" href="/src/css/input.css" />
+        <link rel="stylesheet" href="/src/css/modal.css" />
+        <link rel="stylesheet" href="/src/css/scrollbar.css" />
+        <link rel="stylesheet" href="/src/css/snackbar.css" />
+        <link rel="stylesheet" href="/src/css/toggle.css" />
+    </head>
+    <body>
+        <main id="app" style="display: flex; flex-direction: row">
+            <div class="container" style="display: flex; flex-direction: row">
+                <div class="document-list-container"></div>
+                <div class="editor-container"></div>
+            </div>
+        </main>
+        <div id="snackbar">하위 페이지가 없습니다.</div>
+
+        <div class="modal">
+            <div class="modal-inner">
+                <div class="modal-close">
+                    <svg viewbox="0 0 40 40">
+                        <path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+                    </svg>
+                </div>
+                <div class="modal-editor" style="flex-direction: row"></div>
+            </div>
+        </div>
+
+        <script src="/src/js/main.js" type="module"></script>
+    </body>
+</html>

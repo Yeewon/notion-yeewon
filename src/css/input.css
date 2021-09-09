@@ -20,6 +20,6 @@ input[name='title'] {
 
 textarea[name='content'] {
     width: 800px;
-    height: 600px;
+    height: 300px;
     border: none;
 }

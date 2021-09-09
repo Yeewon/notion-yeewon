@@ -1,4 +1,4 @@
-import {$} from '../../utils/DOM.js';
+import {$, addClassName, removeClassName, replaceClassName, setClassName} from '../../utils/DOM.js';
 
 export const toggleOff = (id) => {
     const $parent = $(`[data-id='${id}']`);
@@ -8,7 +8,7 @@ export const toggleOff = (id) => {
         if ($child.className !== undefined && $child.className.includes('document-title')) {
             $child.style.display = 'none';
         }
-        $parent.classList.remove('toggled');
+        removeClassName('toggled', $parent);
     }
 };
 
@@ -21,14 +21,14 @@ export const toggleOn = (id) => {
             subDocumentCount += 1;
             $child.style.display = 'block';
         }
-        $parent.classList.add('toggled');
+        addClassName('toggled', $parent);
     }
 
     if (subDocumentCount === 0) {
-        const x = document.getElementById('snackbar');
-        x.className = 'show';
+        const $snackbar = document.getElementById('snackbar');
+        setClassName('show', $snackbar);
         setTimeout(function () {
-            x.className = x.className.replace('show', '');
+            $snackbar.className = replaceClassName('show', '', $snackbar);
         }, 2000);
     } else {
         $('.toggle', $parent).innerText = '▼';

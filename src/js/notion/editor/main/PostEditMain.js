@@ -1,6 +1,6 @@
-import MainEditor from './MainEditor.js'
-import {getItem, setItem, removeItem} from '../../../utils/storage.js'
-import {request} from '../../../utils/api.js'
+import MainEditor from './MainEditor.js';
+import {getItem} from '../../../utils/storage.js';
+import {autoSave} from '../AutoSave.js';
 
 export default function PostEditMain({
     $target,
@@ -10,48 +10,33 @@ export default function PostEditMain({
         content: '',
     },
 }) {
-    const $section = document.createElement('div')
+    const $section = document.createElement('div');
 
-    this.state = initialState
+    this.state = initialState;
 
-    let postLocalSaveKey = `temp-post-${this.state.id}`
+    let postLocalSaveKey = `temp-post-${this.state.id}`;
 
     const post = getItem(postLocalSaveKey, {
         id: this.state.id,
         title: '',
         content: '',
-    })
+    });
 
-    let timer = null
+    let timer = null;
 
     const mainEditor = new MainEditor({
         $target,
         initialState: post,
-        onEditing: (post) => {
-            if (timer !== null) {
-                clearTimeout(timer)
-            }
-            timer = setTimeout(async () => {
-                setItem(postLocalSaveKey, {
-                    ...post,
-                })
-                await request(`/documents/${post.id}`, {
-                    method: 'PUT',
-                    body: JSON.stringify(post),
-                })
-                history.pushState(null, null, `/documents/${post.id}`)
-                removeItem(postLocalSaveKey)
-            })
-        },
-    })
+        onEditing: (post) => autoSave(post, postLocalSaveKey, timer),
+    });
 
     this.setState = async (nextState) => {
-        this.state = nextState
-        this.render()
-        mainEditor.setState(this.state)
-    }
+        this.state = nextState;
+        this.render();
+        mainEditor.setState(this.state);
+    };
 
     this.render = () => {
-        $target.appendChild($section)
-    }
+        $target.appendChild($section);
+    };
 }

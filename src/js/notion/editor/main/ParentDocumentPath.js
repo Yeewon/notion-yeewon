@@ -1,10 +1,10 @@
 import {parentDocumentPathTemplate} from '../../../templates/parentDocumentPath.js';
-import {$} from '../../../utils/DOM.js';
+import {$, setClassName} from '../../../utils/DOM.js';
 import {push} from '../../../utils/router.js';
 
 export default function ParentDocumentPath({initialState}) {
     const $path = document.createElement('div');
-    $path.className = 'parent-path';
+    setClassName('parent-path', $path);
     $('.editor-container').appendChild($path);
 
     let parentDocumentList = [

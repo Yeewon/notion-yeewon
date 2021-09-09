@@ -110,7 +110,8 @@ button.toggle:hover {
     visibility: visible;
 }
 
-.go-parent-document-button {
+.go-parent-document-button,
+.go-sub-document-button {
     height: 20px;
     min-width: 10px;
     border-radius: 4px;

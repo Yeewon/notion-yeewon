@@ -1,20 +1,65 @@
-export const API_END_POINT = 'https://kdt.roto.codes';
+export const BASE_URL = 'https://kdt.roto.codes';
 
-export const request = async (url, options = {}) => {
+const option = {
+    post: (data) => ({
+        method: 'POST',
+        body: JSON.stringify(data),
+    }),
+
+    delete: () => ({
+        method: 'DELETE',
+    }),
+
+    put: (data) => ({
+        method: 'PUT',
+        body: JSON.stringify(data),
+    }),
+};
+
+const request = async (url, option = {}) => {
     try {
-        const res = await fetch(`${API_END_POINT}${url}`, {
-            ...options,
+        const response = await fetch(`${BASE_URL}${url}`, {
+            ...option,
             headers: {
                 'Content-Type': 'application/json',
                 'x-username': 'yewon',
             },
         });
-        if (res.ok) {
-            const json = await res.json();
-            return json;
+        if (!response.ok) {
+            throw new Error(response.status);
         }
-        throw new Error('삭제된 페이지입니다.');
-    } catch (error) {
-        alert(error.message);
+        return await response.json();
+    } catch (err) {
+        console.log(`Error : ${err}`);
     }
+};
+
+export const API = {
+    getDocuments: () => {
+        return request(`/documents`);
+    },
+
+    getContent: (documentId) => {
+        return request(`/documents/${documentId}`);
+    },
+
+    addDocument: (newTitle, parentId = null) => {
+        const content = {
+            title: newTitle,
+            parent: parentId,
+        };
+        return request(`/documents`, option.post(content));
+    },
+
+    editDocument: (documentId, newTitle, newContent) => {
+        const content = {
+            title: newTitle,
+            content: newContent,
+        };
+        return request(`/documents/${documentId}`, option.put(content));
+    },
+
+    deleteDocument: (documentId) => {
+        return request(`/documents/${documentId}`, option.delete());
+    },
 };

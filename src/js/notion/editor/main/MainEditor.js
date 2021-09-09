@@ -1,5 +1,5 @@
-import {editorTemplate} from '../../../templates/editor.js'
-import {$} from '../../../utils/DOM.js'
+import {editorTemplate} from '../../../templates/editor.js';
+import {$} from '../../../utils/DOM.js';
 
 export default function MainEditor({
     $target,
@@ -10,48 +10,49 @@ export default function MainEditor({
     },
     onEditing,
 }) {
-    const $editor = document.createElement('div')
-    $editor.className = 'editor'
-    $target.appendChild($editor)
+    const $editor = document.createElement('div');
+    $editor.className = 'editor';
+    $target.appendChild($editor);
 
-    let isInitialize = false
+    let isInitialize = false;
 
-    this.state = initialState
+    this.state = initialState;
 
     this.setState = (nextState) => {
-        this.state = nextState
+        this.state = nextState;
+        const {title, content} = this.state;
 
-        $editor.querySelector('[name=title]').value = this.state.title
-        $editor.querySelector('[name=content]').value = this.state.content
+        $('[name=title]', $editor).value = title;
+        $('[name=content]', $editor).value = content;
 
-        this.render()
-    }
+        this.render();
+    };
 
     this.render = () => {
         if (!isInitialize) {
-            const {title, content} = this.state
-            $editor.innerHTML = editorTemplate(title, content)
-            isInitialize = true
+            const {title, content} = this.state;
+            $editor.innerHTML = editorTemplate(title, content);
+            isInitialize = true;
         }
-    }
+    };
 
-    this.render()
+    this.render();
 
     $editor.addEventListener('keyup', async ({target}) => {
-        const name = target.getAttribute('name')
-        const documentId = this.state.id
+        const name = target.getAttribute('name');
+        const documentId = this.state.id;
 
         if (this.state[name] !== undefined) {
             if (name === 'title') {
-                $(`[data-id="${documentId}"]`).querySelector('.document span').innerText = target.value
+                $(`[data-id="${documentId}"] .document span`).innerText = target.value;
             }
             const nextState = {
                 ...this.state,
                 [name]: target.value,
-            }
+            };
 
-            this.setState(nextState)
-            onEditing(this.state)
+            this.setState(nextState);
+            onEditing(this.state);
         }
-    })
+    });
 }

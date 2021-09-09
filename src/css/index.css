@@ -104,3 +104,11 @@ textarea::placeholder {
     margin-right: 8px;
     min-width: 0px;
 }
+
+.subDocument-link {
+    margin-left: -40px;
+}
+
+li.sub-document {
+    padding: 5px;
+}

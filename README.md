@@ -16,7 +16,7 @@
 
 ##  🖥️ 데모 영상
 <p align="middle">
-    
+    <img src="https://user-images.githubusercontent.com/39365737/160279613-bb697b16-7aa4-4926-8c18-4c277727df2f.gif">
 </p>
 
 
